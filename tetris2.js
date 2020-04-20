@@ -1,31 +1,6 @@
-var board = [];
-var tmpBoard = [];
-var pieceMap = [];
-var canvas = null;
-var WIDTH = 9;
-var HEIGHT = 16;
-var SIZE = 30;
-var INTERVAL = 1100;
-var score = 0;
-var level = 0;
-var state = 'waiting';
-var currentY = -2;
-var currentX = 0;
-var collide = false;
-var timer = null;
-var _lock = false;
-var keyListener = null;
-var mouseListener = null;
-var pieces = [
-  [[1,1,1],
-  [0,1,0]],
-  [[0,0,0,0],
-   [1,1,1,1]],
-  [[1,1],
-  [1,1]],
-  [[1,1,1],
-   [0,0,1]]
-];
+var board = [], tmpBoard = [], pieceMap = [], canvas = null, WIDTH = 9, HEIGHT = 16, SIZE = 30, INTERVAL = 1100;
+var score = 0, level = 0, state = 'waiting', currentY = -2, currentX = 0, collide = false, timer = null, _lock = false, keyListener = null, mouseListener = null;
+var pieces = [[[1,1,1],[0,1,0]],[[0,0,0,0],[1,1,1,1]],[[1,1],[1,1]],[[1,1,1],[0,0,1]]];
 
 function init() {
   canvas = document.getElementById("tetris");
@@ -71,7 +46,6 @@ function startGame() {
       rotate();
     })
   }
-
   updateLevel()
 }
 
@@ -91,7 +65,6 @@ function tryMove(x, y) {
   if (x < 0 || x >= WIDTH) return 0;
 
   tmpBoard = emptyMulti(HEIGHT, WIDTH);
-
   found = false;
   for (var i = 0; i < HEIGHT; i++) {
     for (var j = 0; j < WIDTH; j++) {
@@ -104,7 +77,6 @@ function tryMove(x, y) {
                 return 0;
               } else if (y+n >= 0) {
                 if (board[y+n][x+m] == 1) {
-                  // collide
                   return 1;
                 } else {
                   tmpBoard[y+n][x+m] = 1;
@@ -122,11 +94,9 @@ function tryMove(x, y) {
   }
   return tmpBoard;
 }
-
 function loop() {
   move(currentX, currentY+1);
 }
-
 function move(x, y) {
   if (_lock) return;
   _lock = true;
@@ -134,7 +104,6 @@ function move(x, y) {
     state = 'moving';
     makePiece();
   }
-
   result = tryMove(x, y);
 
   if (result == 0 || result == 1) {
@@ -263,7 +232,5 @@ function draw(mBoard) {
         }
       }
     }
-
 }
-
 init();
