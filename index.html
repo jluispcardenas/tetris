@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Tetris</title>
+  </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<body>
+  <style type="text/css">
+  .card p {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 18px;
+    color: blue;
+  }
+  .col-md-4 .btn {
+    margin-top: 10px;
+    padding: 30px;
+    font-size: 20px;
+  }
+  </style>
+  <div class="container" style="max-width: 440px;">
+    <div class="row">
+      <div class="col-md-8">    
+        <div style="background:#bfe7f2;width:102%">
+          <canvas id="tetris"></canvas>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="border-radius: 9px; border:1px solid #ccc;padding: 26px 5px;">
+          <p>Score: <span id="score">0</span></p>
+          <p>Level: <span id="level">1</span></p>
+        </div>
+        <button id="btnRotate" class="btn btn-primary">Rotar</button>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel"></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:document.getElementById('myModal').className='modal'">Close</button>
+        <button type="button" id="modalBtn" class="btn btn-primary"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="ui.js"></script>
+<script type="text/javascript" src="tetris2.js"></script>
+</body>
+</html>
